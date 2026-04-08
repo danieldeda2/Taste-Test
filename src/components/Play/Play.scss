@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+$green: #1ed760;
+$green-glow: rgba(30, 215, 96, 0.15);
+$green-border: rgba(30, 215, 96, 0.25);
+$black: #0a0a0a;
+$glass: rgba(255, 255, 255, 0.04);
+$glass-border: rgba(255, 255, 255, 0.08);
+$text-muted: rgba(255, 255, 255, 0.4);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background: $black;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(30, 215, 96, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(30, 215, 96, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// === BANNER ===
+
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: transparent;
+  border-bottom: none;
+
+  div {
+    display: contents;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.login-logout-play{
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  background: $glass;
+  border: 1px solid $glass-border;
+  border-radius: 100px;
+  padding: 20px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+
+  &:hover {
+    background: rgba(30, 215, 96, 0.1);
+    border-color: $green-border;
+    color: $green;
+    box-shadow: 0 0 20px $green-glow;
+  }
+}
+
+.home-play {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  background: $glass;
+  border: 1px solid $glass-border;
+  padding: 20px 22px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+
+  &:hover {
+    background: rgba(30, 215, 96, 0.1);
+    border-color: $green-border;
+    color: $green;
+    box-shadow: 0 0 20px $green-glow;
+  }
+}
+
+// === LOGO ===
+
+.logo {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 100px auto 0;
+  filter: drop-shadow(0 8px 32px rgba(30, 215, 96, 0.3));
+  animation: logoFloat 4s ease-in-out infinite;
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+// === TITLE ===
+
+.spotify_guess {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  letter-spacing: -0.5px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 10;
+}
+
+// === PLAYLIST SCROLL CONTAINER ===
+
+.playlist-scroll-container {
+  height: calc(100vh - 280px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding-bottom: 30px;
+  position: relative;
+  z-index: 10;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// === PLAYLIST SELECTION ===
+
+h5 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: $text-muted;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.playlists {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: $glass;
+  border: 1px solid $glass-border;
+  border-radius: 12px;
+  width: 360px;
+  margin: 8px auto;
+  padding: 12px 16px;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+
+  img {
+    height: 52px;
+    width: 52px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    text-align: left;
+    background: transparent;
+    margin: 0;
+  }
+
+  &:hover {
+    background: rgba(30, 215, 96, 0.08);
+    border-color: $green-border;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(30, 215, 96, 0.1);
+  }
+}
+
+// === QUESTION ===
+
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+  position: relative;
+  z-index: 10;
+
+  p {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    width: 300px;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+}
+
+// === ANSWER BUTTONS ===
+
+.buttons_column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.button1,
+.button2,
+.button3 {
+  height: 52px;
+  width: 280px;
+  border-radius: 100px;
+  border: 1px solid $glass-border;
+  background: $glass;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+}
+
+.button1green,
+.button2green,
+.button3green {
+  height: 52px;
+  width: 280px;
+  border-radius: 100px;
+  border: 1px solid $green;
+  background: rgba(30, 215, 96, 0.15);
+  color: $green;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 24px $green-glow;
+  transition: all 0.2s ease;
+}
+
+.buttonRed {
+  height: 52px;
+  width: 280px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 60, 60, 0.4);
+  background: rgba(255, 60, 60, 0.1);
+  color: #ff6b6b;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+// === SCORE ===
+
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: $text-muted;
+  text-align: center;
+  margin-top: 24px;
+  letter-spacing: 1px;
+}
+
+// === RETURN TO PLAYLISTS ===
+
+.returnToPlaylists {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+
+  button {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-muted;
+    background: transparent;
+    border: 1px solid $glass-border;
+    padding: 12px 32px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: white;
+      border-color: rgba(255, 255, 255, 0.2);
+      background: $glass;
+    }
+  }
+}
+
+// === RESPONSIVE ===
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 14px 20px;
+  }
+
+  .playlists {
+    width: 90%;
+  }
+
+  .button1, .button2, .button3,
+  .button1green, .button2green, .button3green,
+  .buttonRed {
+    width: 260px;
+  }
+
+  .question p {
+    font-size: 18px;
+    width: 280px;
+  }
+}

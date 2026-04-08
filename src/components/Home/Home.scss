@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Circular+Std:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+$green: #1ed760;
+$green-glow: rgba(30, 215, 96, 0.15);
+$green-border: rgba(30, 215, 96, 0.25);
+$black: #0a0a0a;
+$glass: rgba(255, 255, 255, 0.04);
+$glass-border: rgba(255, 255, 255, 0.08);
+$text-muted: rgba(255, 255, 255, 0.4);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background: $black;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+// === BACKGROUND BLOBS ===
+
+.App::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(30, 215, 96, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.App::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(30, 215, 96, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+// === BANNER ===
+
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.myInfo-home {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  background: $glass;
+  border: 1px solid $glass-border;
+  border-radius: 100px;
+  padding: 20px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+
+  &:hover {
+    background: rgba(30, 215, 96, 0.1);
+    border-color: $green-border;
+    color: $green;
+    box-shadow: 0 0 20px $green-glow;
+  }
+}
+
+.login-logout-home {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  background: $glass;
+  border: 1px solid $glass-border;
+  border-radius: 100px;
+  padding: 20px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+
+  &:hover {
+    background: rgba(30, 215, 96, 0.1);
+    border-color: $green-border;
+    color: $green;
+    box-shadow: 0 0 20px $green-glow;
+  }
+}
+
+// === HERO ===
+
+.hero {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+}
+
+// === LOGO ===
+
+.logo-wrapper {
+  position: relative;
+  margin-bottom: 36px;
+}
+
+.logo {
+  height: 110px;
+  width: 110px;
+  border-radius: 50%;
+  display: block;
+  filter: drop-shadow(0 8px 32px rgba(30, 215, 96, 0.3));
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+// === TITLE ===
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  gap: 0;
+}
+
+.title-letter {
+  font-family: 'Inter', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: white;
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.title-space {
+  width: 16px;
+  display: inline-block;
+}
+
+// === SUBTITLE ===
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  color: $text-muted;
+  letter-spacing: 0.5px;
+  margin-bottom: 56px;
+  text-align: center;
+}
+
+// === CTA BUTTONS ===
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.play {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #000;
+  background: $green;
+  border: none;
+  padding: 16px 0;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+
+  .play-btn-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .play-icon {
+    font-size: 11px;
+  }
+
+  .play-btn-glow {
+    display: none;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 32px rgba(30, 215, 96, 0.4);
+    background: lighten(#1ed760, 5%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.about {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: $text-muted;
+  background: $glass;
+  border: 1px solid $glass-border;
+  padding: 15px 0;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &:hover {
+    color: white;
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+
+// === GLASS CARD ===
+
+.glass-card {
+  background: $glass;
+  border: 1px solid $glass-border;
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+// === RESPONSIVE ===
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 14px 20px;
+  }
+
+  .title-letter {
+    font-size: 40px;
+  }
+
+  .logo {
+    height: 90px;
+    width: 90px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+}
