@@ -98,7 +98,7 @@ const Play = () => {
             case 1:
                 return `In only three words, please tell me what nationality the artist ${artists[artistIndex]} is and then give me 2 other random nationalities. Respond with only 3 nationalities separated by commas with the correct answer being the first, nothing else`;
             case 2:
-                return `In only 3 numbers, Give me the age of the artist ${artists[artistIndex]} as of October 31st 2024. Then give me 2 numbers that are randomly not more than 10 from the answer. Return ONLY 3 numbers separated by commas with the first number being the answer, nothing else`;
+                return `In only 3 numbers, Give me the age of the artist ${artists[artistIndex]} as of May 1st, 2026. Then give me 2 numbers that are randomly not more than 10 from the answer. Return ONLY 3 numbers separated by commas with the first number being the answer, nothing else`;
             case 3:
                 return `In only three numbers, please tell me what year the artist ${artists[artistIndex]} released their first single and then give me 2 other random years not too far from that and don't let them be equidistant from that year. Only respond with 3 numbers separated by commas, nothing else`;
         }
@@ -213,7 +213,7 @@ const Play = () => {
 
     async function chatGPT_API(question, key) {
         let data = JSON.stringify({
-            "model": "gpt-4o-2024-05-13",
+            "model": "gpt-4.1-2025-04-14",
             "messages": [{ "role": "user", "content": question }]
         });
 
